@@ -6,7 +6,7 @@ const AddCategory = ({ setCategorias }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (texto.trim().length > 2) {
-            setCategorias(categorias => [...categorias, texto])
+            setCategorias(categorias => [texto, ...categorias])
             setTexto("")
         }
     }
