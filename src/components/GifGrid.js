@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useAxiosGifs } from '../hooks/useAxiosGifs'
 import GifGridItem from './GifGridItem';
-import { getGifs } from './helpers/getGifs';
 
 const GifGrid = ({ category }) => {
-    const [images, setImages] = useState([])
-
-    useEffect(() => {
-        getGifs(category).then(imagnes => {
-            setImages(imagnes);
-            console.log(imagnes);
-        }).catch(error => console.log(error))
-    }, [])
-
+    const { data: images, loading } = useAxiosGifs(category);
 
     return (
         <>
             <h3>{category}</h3>
-            <div className='card-grid'>
+            {loading && <p>Cargando...</p>}
+            <div className='card-grid animate__animated animate__backInLeft'>
                 {images?.map((img) => {
                     return (
                         <GifGridItem key={img.id} {...img} />
