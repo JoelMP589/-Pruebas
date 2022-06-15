@@ -12,7 +12,10 @@ const AddCategory = ({ setCategorias }) => {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" value={texto} onChange={(e) => { setTexto(e.target.value) }} placeholder="Categoria" />
+            <input type="text" value={texto} onChange={(e) => {
+                setTexto(e.target.value)
+                console.log("entre en el onchage");
+            }} placeholder="Categoria" />
         </form>
     )
 }
